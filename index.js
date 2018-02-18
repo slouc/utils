@@ -58,7 +58,7 @@ const encodeBase64 = (fetchFilePath, fileName) => {
 };
 
 
-if (arguments.fileUrl) {
+if (arguments.fileUrl && arguments.fileName) {
   const fileUrl = arguments.fileUrl;
   const fileName = arguments.fileName;
   const filePath = config.directoryPath(fileName);
