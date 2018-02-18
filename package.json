@@ -1,0 +1,24 @@
+{
+  "name": "pdfConverter",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+    "file-base64": "^1.0.0",
+    "minimist": "^1.2.0",
+    "request": "^2.83.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "debug": "node debug app.js",
+    "test": "mocha"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anandsahil/pdfToBase64Encoding.git"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "should": "^7.0.1"
+  }
+}

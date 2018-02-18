@@ -1,0 +1,10 @@
+.DS_STORE
+.idea
+.netbeans
+.njsproj
+.node_history
+.sln
+.tmp
+node_modules
+npm-debug.log
+gulpfile.js
