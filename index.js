@@ -1,10 +1,13 @@
-const arguments = require('minimist')(process.argv.slice(2));
+'use strict';
+
+let arg = require('minimist')(process.argv.slice(2));
 const fs = require("fs");
 const request = require("request");
 const config = {
   directoryPath : (filename) =>  `./downloads/${filename}`,
   base64EncodedPath: (filename) =>  `./base64Encoded/${filename}`
 };
+
 const base64 = require('file-base64');
 
 const downloadFile = (fileUrl, fileName, filePath) => {
@@ -38,6 +41,33 @@ const downloadFile = (fileUrl, fileName, filePath) => {
   })
 };
 
+const getFileContents = (fileUrl, fileName, filePath) => {
+  return new Promise((resolve, reject) => {
+    let fileWriteStream = fs.createWriteStream(filePath);
+    var s = "";
+    request
+      .get(fileUrl, {encoding: "base64"})
+      .on('response', function (response) {
+        console.info(`Response from url  = ${response.statusCode}`);
+        console.log(`File content type header from url ${response.headers['content-type']}`)
+      })
+      .on('data', function (data) {
+        s += data
+      })
+      .on('error', function (err) {
+        console.error(`Error from loading the file ${fileUrl}`, err);
+        return reject(err);
+      })
+      .on('end', function () {
+        console.error(`Done downloading encoding`);
+        return resolve(s);
+      })
+
+    });
+};
+
+
+
 const encodeBase64 = (fetchFilePath, fileName) => {
   return new Promise((resolve, reject) => {
     const p = `${fileName.split(".")[0]}.txt`;
@@ -58,12 +88,13 @@ const encodeBase64 = (fetchFilePath, fileName) => {
 };
 
 
-if (arguments.fileUrl && arguments.fileName) {
-  const fileUrl = arguments.fileUrl;
-  const fileName = arguments.fileName;
+if (arg.fileUrl && arg.fileName) {
+  const fileUrl = arg.fileUrl;
+  const fileName = arg.fileName;
   const filePath = config.directoryPath(fileName);
-  return downloadFile(fileUrl, fileName, filePath).then(r => {
-    return encodeBase64(filePath, fileName)
+  return getFileContents(fileUrl, fileName, filePath).then(r => {
+    console.log(r)
+    //return encodeBase64(filePath, fileName)
   }).catch(e => {
     console.error(`Pdf conversion failed please check logs`, e.stack)
   })

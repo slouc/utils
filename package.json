@@ -7,6 +7,10 @@
     "minimist": "^1.2.0",
     "request": "^2.83.0"
   },
+  "author": {
+    "name": "Sahil Anand",
+    "email": "sahilanand2025@gmail.com"
+  },
   "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
@@ -16,6 +20,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/anandsahil/pdfToBase64Encoding.git"
+  },
+  "engines": {
+    "node": ">= 0.8.x"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
