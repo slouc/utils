@@ -8,7 +8,7 @@ This small project takes a pdf url and pdf filename and converts it into a file 
 
 This file takes a fileUrl and a fileName as arguments as shown below
   node index.js --fileUrl http://www.pdf995.com/samples/pdf.pdf --fileName=pdf.pdf
-The Pdf is downloaded in foler downloads and the base64encoded txt file is stored in folder base64Encoded
+The Pdf is downloaded in folder downloads and the base64encoded txt file is stored in folder base64Encoded
 
 Steps to execute 
 1. Clone repository 
@@ -20,7 +20,7 @@ Steps to execute
 This file takes a fileUrl as shown below 
   node clientPdfToBase64.js --fileUrl http://www.pdf995.com/samples/pdf.pdf
   
-This does not download the file to the filesystem  but just makes sure that the base64Encoding is printed out for the file on the console.
+This does not download the file to the filesystem. It just makes sure that the base64Encoding is printed out for the file on the console.
 
 Steps to execute 
 1. Clone repository 
@@ -28,7 +28,7 @@ Steps to execute
 3. Run command `node clientPdfToBase64.js --fileUrl http://www.pdf995.com/samples/pdf.pdf --fileName=pdf.pdf`
 
 ## Usage csvToJsonParser.js 
-This file takes a fifilePath as shown below 
+This file takes a filePath as shown below 
   node csvToJsonParser.js --path csv/test.csv
 
 This right now just prints out the json on the terminal.
